@@ -3,7 +3,20 @@ import React from 'react';
 
 export default class App extends React.Component {
 
- 
+    constructor(props) {
+        super(props);
+        this.state = { searchString : "" };
+    }
+
+    handleChange(e){
+
+        // If you comment out this line, the text box will not change its value.
+        // This is because in React, an input cannot change independently of the value
+        // that was assigned to it. In our case this is this.state.searchString.
+        console.log(e.target.value);
+        this.setState({searchString:e.target.value});
+    }
+
     render () {
         console.log(this.props.items);
         var libraries = this.props.items,
@@ -21,7 +34,7 @@ export default class App extends React.Component {
         }
 
         return <div>
-                    <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Type here" />
+                    <input type="text" value={this.state.searchString} onChange={this.handleChange.bind(this)}  placeholder="Type here" />
 
                     <ul> 
 
