@@ -1,5 +1,5 @@
 import React from 'react';
-//var React = require('react');
+import Rate from '../components/Rate.js'
 
 export default class App extends React.Component {
 
@@ -13,12 +13,10 @@ export default class App extends React.Component {
         // If you comment out this line, the text box will not change its value.
         // This is because in React, an input cannot change independently of the value
         // that was assigned to it. In our case this is this.state.searchString.
-        console.log(e.target.value);
         this.setState({searchString:e.target.value});
     }
 
     render () {
-        console.log(this.props.items);
         var libraries = this.props.items,
             searchString = this.state.searchString.trim().toLowerCase();
 
@@ -34,6 +32,7 @@ export default class App extends React.Component {
         }
 
         return <div>
+                    <Rate/>
                     <input type="text" value={this.state.searchString} onChange={this.handleChange.bind(this)}  placeholder="Type here" />
 
                     <ul> 
